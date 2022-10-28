@@ -1,5 +1,12 @@
 from dao.actorDao import ActorDao
 
+class Actor:
+  def __init__(self, nome, cognome):
+    self.nome = nome
+    self.cognome = cognome
+  
+
+
 
 class ActorDto:
 
@@ -8,7 +15,7 @@ class ActorDto:
     data = ActorDao.findAllActors()
     newDict = {}
     for i, lista in enumerate(data):
-      newDict[i] = {"nome": lista[0], "cognome": lista[1]}
+      newDict[i] = Actor(lista[0], lista[1])
     return newDict
 
   @classmethod
@@ -16,5 +23,5 @@ class ActorDto:
     data = ActorDao.findFirstNameAndLastnameByFilmTitle(filmtitle)
     newDict = {}
     for i, lista in enumerate(data):
-      newDict[i] = {"nome": lista[0], "cognome": lista[1]}
+      newDict[i] = Actor(lista[0], lista[1])
     return newDict
