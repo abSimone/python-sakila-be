@@ -1,13 +1,13 @@
 import mysql.connector as mysql
 import json
-import os
-# from pathlib import WindowsPath
+
 from pathlib import Path
+# from pathlib import Path
 class MySql:
 
   @classmethod
   def openConnection(cls):
-    config = json.loads(Path("./mysqlcon/c.json").read_text())
+    config = json.loads(Path(r"C:\Users\simon\Desktop\Corso\CLoud\python-sakila-be\dao\mysql\c.json").read_text())
     # qui manca il dizionario da utilizzare come parametro per connect
     try:
       cls.conn =  mysql.connect(**config)
