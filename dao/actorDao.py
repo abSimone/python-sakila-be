@@ -46,3 +46,14 @@ class ActorDao:
         MySql.closeConnection()
         return data  
 
+    @classmethod
+    def findActorById(cls):
+        MySql.openConnection()
+        MySql.query(
+          f"SELECT actor_id \
+            FROM Actor "
+            )
+        data = MySql.getResults()
+        MySql.closeConnection()
+        return data
+
