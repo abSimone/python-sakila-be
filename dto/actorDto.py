@@ -45,3 +45,10 @@ class ActorDto:
 
 # aggiungi su actor i 3 metodi per get actor by id, nome, cognome
 # add lista attori su più di 15 film
+    @classmethod
+    def getActorsFor10NumFilm(cls):
+        data = ActorDao.findFirstNameAndLastnameBy10NumFilm()
+        newList = []
+        for lista in data:
+            newList.append(Actor(lista[0], lista[1]))
+        return newList
