@@ -24,3 +24,24 @@ class ActorDto:
         for lista in data:
             newList.append(Actor(lista[0], lista[1]))
         return newList
+    
+    @classmethod
+    def getActorByName(cls, name: str):
+        data = ActorDao.findActorByName(name)
+        newList = []
+        for lista in data:
+            newList.append(Actor(lista[0], lista[1]))
+        return newList
+    
+    @classmethod
+    def getActorBySurname(cls, surname: str):
+        data = ActorDao.findActorBySurname(surname)
+        newList = []
+        for lista in data:
+            newList.append(Actor(lista[0], lista[1]))
+        return newList
+
+
+
+# aggiungi su actor i 3 metodi per get actor by id, nome, cognome
+# add lista attori su più di 15 film

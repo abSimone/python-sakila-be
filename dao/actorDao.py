@@ -25,4 +25,24 @@ class ActorDao:
         data = MySql.getResults()
         MySql.closeConnection()
         return data
+      
+    @classmethod
+    def findActorByName(cls, name):
+        MySql.openConnection()
+        MySql.query(
+          f"SELECT * FROM Actor WHERE first_name = '{name}'"
+          )
+        data = MySql.getResults()
+        MySql.closeConnection()
+        return data
+      
+    @classmethod
+    def findActorBySurname(cls, surname):
+        MySql.openConnection()
+        MySql.query(
+          f"SELECT * FROM Actor WHERE last_name = '{surname}'"
+          )
+        data = MySql.getResults()
+        MySql.closeConnection()
+        return data  
 
