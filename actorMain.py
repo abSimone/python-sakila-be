@@ -7,6 +7,6 @@ app = FastAPI()
 def getAllActors():
   return {"actors" : ActorDto.getAllActors()}
 
-@app.get('/{filmtitle}')
-def getActorsForFilm(filmtitle:str):
-  return {"actors" : ActorDto.getActorsForFilm(filmtitle)}
+@app.get('/{titolo_film}')
+def getActorsForFilm(titolo_film:str):
+  return {"actors" : ActorDto.getActorsForFilm(titolo_film)}

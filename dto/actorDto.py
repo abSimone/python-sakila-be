@@ -18,8 +18,8 @@ class ActorDto:
     return newDict
 
   @classmethod
-  def getActorsForFilm(cls, filmtitle: str):
-    data = ActorDao.findFirstNameAndLastnameByFilmTitle(filmtitle)
+  def getActorsForFilm(cls, titolo_film: str):
+    data = ActorDao.findFirstNameAndLastnameByFilmTitle(titolo_film)
     newDict = {}
     for i, lista in enumerate(data):
       newDict[i] = Actor(lista[0], lista[1])
