@@ -1,3 +1,4 @@
+from hashlib import new
 from dao.actorDao import ActorDao
 
 
@@ -23,4 +24,12 @@ class ActorDto:
         newList = []
         for lista in data:
             newList.append(Actor(lista[0], lista[1]))
+        return newList
+
+    @classmethod
+    def getAllActorId (cls):
+        data = ActorDao.findActorById()
+        newList = []
+        for lista in data:
+            newList.append(Actor(lista[0]))
         return newList
