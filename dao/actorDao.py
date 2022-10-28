@@ -1,5 +1,4 @@
-from dao.mysql.db_utility import MySql
-import json
+from dao.utility.db import MySql
 
 
 class ActorDao:
