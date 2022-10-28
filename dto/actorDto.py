@@ -1,11 +1,10 @@
 from dao.actorDao import ActorDao
 
+
 class Actor:
   def __init__(self, nome, cognome):
     self.nome = nome
     self.cognome = cognome
-  
-
 
 
 class ActorDto:
