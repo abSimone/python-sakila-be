@@ -1,4 +1,4 @@
-from dao.utility.db import MySql
+from utility.db import MySql
 
 
 class ActorDao:
@@ -7,7 +7,8 @@ class ActorDao:
         MySql.openConnection()
         MySql.query(
           "SELECT first_name, last_name \
-           FROM Actor LIMIT 10"
+           FROM Actor LIMIT 10\
+           ORDER BY last_name"
           )
         data = MySql.getResults()
         MySql.closeConnection()
