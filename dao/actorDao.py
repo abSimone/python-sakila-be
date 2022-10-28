@@ -25,6 +25,20 @@ class ActorDao:
         data = MySql.getResults()
         MySql.closeConnection()
         return data
+    
+    @classmethod
+    def findFirstNameAndLastnameBy10NumFilm(cls):
+        MySql.openConnection()
+        MySql.query(
+          f"SELECT actor.first_name, actor.last_name, COUNT(film_actor.actor_id) AS Num, \
+          FROM actor \
+          INNER JOIN film_actor ON actor.actor_id = film_actor.actor_id\
+          GROUP BY film_actor.actor_id\
+          HAVING COUNT(film_actor.actor_id) > 15;"
+        )
+        data = MySql.getResults()
+        MySql.closeConnection()
+        return data
 
     @classmethod
     def findActorById(cls):
