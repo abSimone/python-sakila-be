@@ -1,6 +1,4 @@
-from hashlib import new
 from dao.actorDao import ActorDao
-
 
 class Actor:
     def __init__(self, nome, cognome):
@@ -49,6 +47,7 @@ class ActorDto:
         for lista in data:
             newList.append(Actor(lista[0]))
         return newList
+    
     @classmethod
     def getActorsFor10NumFilm(cls):
         data = ActorDao.findFirstNameAndLastnameBy10NumFilm()

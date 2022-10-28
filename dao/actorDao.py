@@ -7,7 +7,7 @@ class ActorDao:
         MySql.openConnection()
         MySql.query(
           "SELECT first_name, last_name \
-           FROM Actor LIMIT 10"
+            FROM Actor LIMIT 10"
           )
         data = MySql.getResults()
         MySql.closeConnection()
@@ -65,8 +65,9 @@ class ActorDao:
           FROM actor \
           INNER JOIN film_actor ON actor.actor_id = film_actor.actor_id\
           GROUP BY film_actor.actor_id\
-          HAVING COUNT(film_actor.actor_id) > 15;"
+          HAVING COUNT(film_actor.actor_id) > 15"
         )
         data = MySql.getResults()
         MySql.closeConnection()
         return data
+      
