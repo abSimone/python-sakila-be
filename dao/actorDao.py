@@ -36,4 +36,3 @@ class ActorDao:
       data = MySql.getResults()
       MySql.closeConnection()
       return data
-
