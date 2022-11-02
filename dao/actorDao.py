@@ -7,7 +7,7 @@ class ActorDao:
         MySql.openConnection()
         MySql.query(
           "SELECT first_name, last_name \
-           FROM Actor LIMIT 10\
+           FROM Actor\
            ORDER BY last_name"
           )
         data = MySql.getResults()
