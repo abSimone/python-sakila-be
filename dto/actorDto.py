@@ -2,11 +2,11 @@ from dao.actorDao import ActorDao
 
 class Actor:
     def __init__(self, nome, cognome):
-        self.nome = nome
-        self.cognome = cognome
+        self.nome = nome.capitalize()
+        self.cognome = cognome.capitalize()
 
     def __str__(self):
-      return '{"nome": self.nome, "cognome" : self.cognome}'
+      return f'{"nome": {self.nome}, "cognome" : {self.cognome}}'
 
 class ActorDto:
 
@@ -15,7 +15,8 @@ class ActorDto:
         data = ActorDao.findAllActors()
         newList = []
         for lista in data:
-            newList.append(Actor(lista[0], lista[1]))
+            a = Actor(lista[0], lista[1])
+            newList.append({"nome": a.nome, "cognome" : a.cognome})
         return newList
 
     @classmethod
@@ -23,9 +24,10 @@ class ActorDto:
         data = ActorDao.findFirstNameAndLastnameByFilmTitle(titolo_film)
         newList = []
         for lista in data:
-            newList.append(Actor(lista[0], lista[1]))
+            a = Actor(lista[0], lista[1])
+            newList.append(f'{"nome": {a.nome}, "cognome" : {a.cognome}}')
         return newList
 
 
-print(ActorDao.findAllActors())
+
 
