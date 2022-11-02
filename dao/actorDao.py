@@ -60,6 +60,18 @@ class ActorDao:
         return data
 
     @classmethod
+    def findActorByIdentityNumber(cls, id):
+        MySql.openConnection()
+        MySql.query(
+          f"SELECT first_name, last_name\
+            FROM ACTOR\
+            WHERE actor_id = {id}"
+        )
+        data = MySql.getResults()
+        MySql.closeConnection()
+        return data
+
+    @classmethod
     def findFirstNameAndLastnameBy15NumFilm(cls):
         MySql.openConnection()
         MySql.query(
