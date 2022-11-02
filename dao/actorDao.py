@@ -7,6 +7,7 @@ class ActorDao:
         MySql.openConnection()
         MySql.query(
           "SELECT first_name, last_name \
+            ORDER BY last_name \
             FROM Actor LIMIT 10"
           )
         data = MySql.getResults()
@@ -47,11 +48,13 @@ class ActorDao:
         return data  
 
     @classmethod
-    def findActorById(cls, id):
+    def findActorById(cls, id_attore):
         MySql.openConnection()
         MySql.query(
-          f"SELECT first_name, last_name FROM Actor WHERE actor_id = '{id}'"
-          )
+          f"SELECT first_name, last_name\
+            FROM ACTOR\
+            WHERE actor_id = {id_attore}"
+        )
         data = MySql.getResults()
         MySql.closeConnection()
         return data
@@ -61,12 +64,11 @@ class ActorDao:
         MySql.openConnection()
         MySql.query(
           f"SELECT actor.first_name, actor.last_name, COUNT(film_actor.actor_id) AS Num \
-          FROM actor \
-          INNER JOIN film_actor ON actor.actor_id = film_actor.actor_id\
-          GROUP BY film_actor.actor_id\
-          HAVING COUNT(film_actor.actor_id) > 15"
+            FROM actor \
+            INNER JOIN film_actor ON actor.actor_id = film_actor.actor_id\
+            GROUP BY film_actor.actor_id\
+            HAVING COUNT(film_actor.actor_id) > 15"
         )
         data = MySql.getResults()
         MySql.closeConnection()      
         return data
-      
