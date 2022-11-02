@@ -24,3 +24,9 @@ class ActorDto:
         for lista in data:
             newList.append(Actor(lista[0], lista[1]))
         return newList
+
+    @classmethod
+    def getActorsById(cls, id_attore: int):
+        data = ActorDao.findActorById(id_attore)
+        for nome, cognome in data:
+            return f"{nome} {cognome}"
