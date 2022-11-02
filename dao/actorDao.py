@@ -7,7 +7,8 @@ class ActorDao:
         MySql.openConnection()
         MySql.query(
           "SELECT first_name, last_name \
-           FROM Actor LIMIT 10"
+           FROM Actor\
+           ORDER BY last_name"
           )
         data = MySql.getResults()
         MySql.closeConnection()
@@ -25,3 +26,13 @@ class ActorDao:
         data = MySql.getResults()
         MySql.closeConnection()
         return data
+
+    @classmethod
+    def findActorById(cls, id_attore):
+      MySql.openConnection()
+      MySql.query(f"SELECT first_name, last_name\
+                  FROM ACTOR\
+                  WHERE actor_id = {id_attore}")
+      data = MySql.getResults()
+      MySql.closeConnection()
+      return data

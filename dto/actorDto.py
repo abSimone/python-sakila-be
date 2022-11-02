@@ -29,5 +29,9 @@ class ActorDto:
         return newList
 
 
-
+    @classmethod
+    def getActorsById(cls, id_attore: int):
+        data = ActorDao.findActorById(id_attore)
+        for nome, cognome in data:
+            return f"{nome} {cognome}"
 
