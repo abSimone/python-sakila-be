@@ -48,7 +48,7 @@ class ActorDto:
         return newList
     
     @classmethod
-    def getActorsFor10NumFilm(cls):
+    def getActorsFor15NumFilm(cls):
         data = ActorDao.findFirstNameAndLastnameBy15NumFilm()
         newList = []
         for lista in data:
