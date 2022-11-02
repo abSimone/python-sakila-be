@@ -12,6 +12,4 @@ class FilmDto:
         newList = []
         for lista in data:
             newList.append(FilmName(lista[1]))
-        ouputlist = []
-        for film in newList:
-                print(film)
+        return newList

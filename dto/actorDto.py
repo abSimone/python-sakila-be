@@ -30,3 +30,9 @@ class ActorDto:
         data = ActorDao.findActorById(id_attore)
         for nome, cognome in data:
             return f"{nome} {cognome}"
+
+    def __str__(self):
+        return f'\{"nome": {self.nome}, "cognome" : {self.cognome}\}'
+
+print(ActorDto.getActorsById(1))
+print(ActorDto().__str__())
