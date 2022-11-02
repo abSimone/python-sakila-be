@@ -13,3 +13,11 @@ class FilmDto:
         for lista in data:
             newList.append(FilmName(lista[1]))
         return newList
+
+    @classmethod
+    def getAllTitleStartR(cls):
+        data = Film.getAllFilm()
+        newList = []
+        for lista in data:
+            newList.append(FilmName(lista[1]))
+        return newList
