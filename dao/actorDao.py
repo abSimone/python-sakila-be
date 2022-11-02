@@ -7,8 +7,8 @@ class ActorDao:
         MySql.openConnection()
         MySql.query(
           "SELECT first_name, last_name \
-           FROM Actor\
-           ORDER BY last_name"
+            ORDER BY last_name \
+            FROM Actor LIMIT 10"
           )
         data = MySql.getResults()
         MySql.closeConnection()
@@ -26,13 +26,49 @@ class ActorDao:
         data = MySql.getResults()
         MySql.closeConnection()
         return data
+      
+    @classmethod
+    def findActorByName(cls, name):
+        MySql.openConnection()
+        MySql.query(
+          f"SELECT * FROM Actor WHERE first_name = '{name}'"
+          )
+        data = MySql.getResults()
+        MySql.closeConnection()
+        return data
+      
+    @classmethod
+    def findActorBySurname(cls, surname):
+        MySql.openConnection()
+        MySql.query(
+          f"SELECT * FROM Actor WHERE last_name = '{surname}'"
+          )
+        data = MySql.getResults()
+        MySql.closeConnection()
+        return data  
 
     @classmethod
     def findActorById(cls, id_attore):
-      MySql.openConnection()
-      MySql.query(f"SELECT first_name, last_name\
-                  FROM ACTOR\
-                  WHERE actor_id = {id_attore}")
-      data = MySql.getResults()
-      MySql.closeConnection()
-      return data
+        MySql.openConnection()
+        MySql.query(
+          f"SELECT first_name, last_name\
+            FROM ACTOR\
+            WHERE actor_id = {id_attore}"
+        )
+        data = MySql.getResults()
+        MySql.closeConnection()
+        return data
+
+    @classmethod
+    def findFirstNameAndLastnameBy15NumFilm(cls):
+        MySql.openConnection()
+        MySql.query(
+          f"SELECT actor.first_name, actor.last_name, COUNT(film_actor.actor_id) AS Num \
+            FROM actor \
+            INNER JOIN film_actor ON actor.actor_id = film_actor.actor_id\
+            GROUP BY film_actor.actor_id\
+            HAVING COUNT(film_actor.actor_id) > 15"
+        )
+        data = MySql.getResults()
+        MySql.closeConnection()      
+        return data

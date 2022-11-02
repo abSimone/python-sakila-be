@@ -28,10 +28,34 @@ class ActorDto:
             newList.append(f'{"nome": {a.nome}, "cognome" : {a.cognome}}')
         return newList
 
+    @classmethod
+    def getActorByName(cls, name: str):
+        data = ActorDao.findActorByName(name)
+        newList = []
+        for lista in data:
+            newList.append(Actor(lista[0], lista[1]))
+        return newList
+    
+    @classmethod
+    def getActorBySurname(cls, surname: str):
+        data = ActorDao.findActorBySurname(surname)
+        newList = []
+        for lista in data:
+            newList.append(Actor(lista[0], lista[1]))
+        return newList
 
     @classmethod
-    def getActorsById(cls, id_attore: int):
-        data = ActorDao.findActorById(id_attore)
-        for nome, cognome in data:
-            return f"{nome} {cognome}"
-
+    def getActorById (cls, id: int):
+        data = ActorDao.findActorById(id)
+        newList = []
+        for lista in data:
+            newList.append(Actor(lista[0], lista[1]))
+        return newList
+    
+    @classmethod
+    def getActorsFor15NumFilm(cls):
+        data = ActorDao.findFirstNameAndLastnameBy15NumFilm()
+        newList = []
+        for lista in data:
+            newList.append(Actor(lista[0], lista[1]))
+        return newList
