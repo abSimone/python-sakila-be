@@ -47,18 +47,17 @@ class ActorDao:
         return data  
 
     @classmethod
-    def findActorById(cls):
+    def findActorById(cls, id):
         MySql.openConnection()
         MySql.query(
-          f"SELECT actor_id \
-            FROM Actor "
-            )
+          f"SELECT first_name, last_name FROM Actor WHERE actor_id = '{id}'"
+          )
         data = MySql.getResults()
         MySql.closeConnection()
         return data
 
     @classmethod
-    def findFirstNameAndLastnameBy10NumFilm(cls):
+    def findFirstNameAndLastnameBy15NumFilm(cls):
         MySql.openConnection()
         MySql.query(
           f"SELECT actor.first_name, actor.last_name, COUNT(film_actor.actor_id) AS Num \
@@ -68,6 +67,6 @@ class ActorDao:
           HAVING COUNT(film_actor.actor_id) > 15"
         )
         data = MySql.getResults()
-        MySql.closeConnection()
+        MySql.closeConnection()      
         return data
       

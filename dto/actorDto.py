@@ -1,5 +1,4 @@
 from dao.actorDao import ActorDao
-
 class Actor:
     def __init__(self, nome, cognome):
         self.nome = nome
@@ -41,16 +40,16 @@ class ActorDto:
         return newList
 
     @classmethod
-    def getAllActorId (cls):
-        data = ActorDao.findActorById()
+    def getActorById (cls, id: int):
+        data = ActorDao.findActorById(id)
         newList = []
         for lista in data:
-            newList.append(Actor(lista[0]))
+            newList.append(Actor(lista[0], lista[1]))
         return newList
     
     @classmethod
     def getActorsFor10NumFilm(cls):
-        data = ActorDao.findFirstNameAndLastnameBy10NumFilm()
+        data = ActorDao.findFirstNameAndLastnameBy15NumFilm()
         newList = []
         for lista in data:
             newList.append(Actor(lista[0], lista[1]))
