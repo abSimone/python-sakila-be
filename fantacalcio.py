@@ -1,1 +1,2 @@
 class persona
+method1
