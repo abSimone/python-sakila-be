@@ -21,10 +21,12 @@ class ActorDto:
 
     @classmethod
     def getActorsForFilm(cls, titolo_film: str):
-        data = ActorDao.findFirstNameAndLastnameByFilmTitle(titolo_film)
+        data = ActorDao.findAllActors(titolo_film)
+        newList1=[]
         newList = []
         for lista in data:
             a = Actor(lista[0], lista[1])
+            newList[0]="0"
             newList.append(f'{"nome": {a.nome}, "cognome" : {a.cognome}}')
         return newList
 
