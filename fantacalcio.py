@@ -1,1 +1,2 @@
-class persona
+def method:
+    print("ciao")
