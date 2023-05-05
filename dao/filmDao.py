@@ -10,6 +10,13 @@ class Film:
         MySql.closeConnection()
 
         return data
+def getAllFilm(cls):
+        MySql.openConnection()
+        MySql.query("SELECT * FROM film")
+        data = MySql.getResults()
+        MySql.closeConnection()
+
+        return data
 
     @classmethod
     def getAllPgFilms(cls):
