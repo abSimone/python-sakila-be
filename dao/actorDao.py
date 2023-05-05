@@ -26,8 +26,7 @@ def findFirstNameAndLastnameByFilmTitle2(cls, titolo_film):
         data = MySql.getResults()
         MySql.closeConnection()
         return data
-      
-    
+
     @classmethod
     def findFirstNameAndLastnameByFilmTitle(cls, titolo_film):
         MySql.openConnection()
