@@ -13,6 +13,17 @@ class ActorDao:
         data = MySql.getResults()
         MySql.closeConnection()
         return data
+@classmethod
+    def findAllActors1(cls):
+        MySql.openConnection()
+        MySql.query(
+          "SELECT first_name, last_name \
+            FROM Actor\
+            ORDER BY last_name"
+          )
+        data = MySql.getResults()
+        MySql.closeConnection()
+        return data
 
     @classmethod
     def findFirstNameAndLastnameByFilmTitle(cls, titolo_film):
